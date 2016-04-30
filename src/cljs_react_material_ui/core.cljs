@@ -1,5 +1,5 @@
 (ns cljs-react-material-ui.core
-  (:refer-clojure :exclude [list])
+  (:refer-clojure :exclude [list stepper])
   (:require-macros [cljs-react-material-ui.elements :as me])
   (:require [clojure.string :as str]
             [clojure.walk :as walk]
