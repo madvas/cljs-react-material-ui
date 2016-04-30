@@ -1,14 +1,56 @@
 # cljs-react-material-ui
 
-WIP
+This library is interop to get [Material-UI](http://www.material-ui.com/#/) working in Clojurescript.
+
+###### See example app here 
+https://github.com/madvas/cljs-react-material-ui-example
+
+## Installation
+- Add `[cljs-react-material-ui "0.1.8"]` to your dependencies
+- Exclude `cljsjs/react` and `cljsjs/react-dom` from Om or other React library.
+This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
+for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react cljsjs/react-dom]]`
 
 ## Usage
 
-FIXME
+  ```
+  (ns cljs-react-material-ui-example.core
+    (:require [cljsjs.material-ui]  ; I recommend adding this at the beginning of core file
+                                    ;  so React is always loaded first. Tho not always needed
+              [cljs-react-material-ui.core :as ui]
+              [cljs-react-material-ui.icons :as ic]))   ; SVG icons that comes with MaterialUI
+                                                        ; Including icons is not required
+  ```
 
-## License
+U must start your MaterialUI component tree with [ui/mui-theme-provider](http://www.material-ui.com/v0.15.0-beta.2/#/customization/themes), which has exactly one child and defined theme. Use the same pattern when u want to change theme for some children, see example app.
+```
+(ui/mui-theme-provider
+    {:mui-theme (ui/get-mui-theme)}
+    (ui/paper "Hello world"))
+    
+(ui/mui-theme-provider 
+    {:mui-theme (ui/get-mui-theme 
+        {:palette                       ; U can use either camelCase or kebab-case
+            {:primary1-color (ui/color :deep-orange-a100)} 
+         :raised-button 
+            {:primary-text-color (ui/color :light-black) 
+             :font-weight 200}})}
+    (ui/raised-button
+        {:label   "Click me"
+         :primary true}))
+```
 
-Copyright © 2016 FIXME
+You can use all components (icons also) in their kebab-case form. Either with props or without.
+```
+(ui/radio-button
+    {:value          "some_val"
+     :label          "Yes"
+     :class-name     "my-radio-class"
+     :checked-icon   (ic/action-favorite)
+     :unchecked-icon (ic/action-favorite-border)})
+     
+ (ui/table-row
+    (ui/table-header-column "Name")
+    (ui/table-header-column "Date"))
+```
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
