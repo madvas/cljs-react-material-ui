@@ -13,17 +13,17 @@ for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react cljsjs/re
 
 ## Usage
 
-  ```
+  ```clojure
   (ns cljs-react-material-ui-example.core
     (:require [cljsjs.material-ui]  ; I recommend adding this at the beginning of core file
-                                    ;  so React is always loaded first. Tho not always needed
+                                    ;  so React is always loaded first. It's not always needed
               [cljs-react-material-ui.core :as ui]
               [cljs-react-material-ui.icons :as ic]))   ; SVG icons that comes with MaterialUI
                                                         ; Including icons is not required
   ```
 
-U must start your MaterialUI component tree with [ui/mui-theme-provider](http://www.material-ui.com/v0.15.0-beta.2/#/customization/themes), which has exactly one child and defined theme. Use the same pattern when u want to change theme for some children, see example app.
-```
+U must start your MaterialUI component tree with [ui/mui-theme-provider](http://www.material-ui.com/v0.15.0-beta.2/#/customization/themes), which must have exactly one direct child and defined theme. Use the same pattern when u want to change theme for some children, see example app.
+```clojure
 (ui/mui-theme-provider
     {:mui-theme (ui/get-mui-theme)}
     (ui/paper "Hello world"))
@@ -41,7 +41,7 @@ U must start your MaterialUI component tree with [ui/mui-theme-provider](http://
 ```
 
 You can use all components (icons also) in their kebab-case form. Either with props or without.
-```
+```clojure
 (ui/radio-button
     {:value          "some_val"
      :label          "Yes"
