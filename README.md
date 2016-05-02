@@ -32,7 +32,7 @@ U must start your MaterialUI component tree with [ui/mui-theme-provider](http://
     
 (ui/mui-theme-provider 
     {:mui-theme (ui/get-mui-theme 
-        {:palette                       ; U can use either camelCase or kebab-case
+        {:palette                   ; U can use either camelCase or kebab-case
             {:primary1-color (ui/color :deep-orange-a100)} 
          :raised-button 
             {:primary-text-color (ui/color :light-black) 
@@ -40,6 +40,10 @@ U must start your MaterialUI component tree with [ui/mui-theme-provider](http://
     (ui/raised-button
         {:label   "Click me"
          :primary true}))
+         
+(ui/mui-theme-provider
+    {:mui-theme (ui/get-mui-theme (aget js/MaterialUIStyles "DarkRawTheme"))}
+    (ui/paper "Hello dark world"))
 ```
 
 You can use all components (icons also) in their kebab-case form. Either with props or without.
@@ -56,3 +60,10 @@ You can use all components (icons also) in their kebab-case form. Either with pr
     (ui/table-header-column "Date"))
 ```
 
+Global objects
+```
+js/MaterialUI ; Contains constructors to all components. No need to use directly.
+js/MaterialUIStyles ; Contains everything from material-ui/src/styles/index.js
+js/MaterialUISvgIcons ; Contains constructors to all icons. Exists only when you
+                      ; include icons in your code. No need to use directly.
+```
