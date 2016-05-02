@@ -61,7 +61,7 @@ You can use all components (icons also) in their kebab-case form. Either with pr
 ```
 
 Global objects
-```
+```clojure
 js/MaterialUI ; Contains constructors to all components. No need to use directly.
 js/MaterialUIStyles ; Contains everything from material-ui/src/styles/index.js
 js/MaterialUISvgIcons ; Contains constructors to all icons. Exists only when you
