@@ -13,3 +13,6 @@
 
 (defmacro generate-mui-dom-fns [fname tags]
   `(do ~@(clojure.core/map (partial generate-mui-dom-fn fname) tags)))
+
+(defn generate-mui-reagent-fn [tname]
+  `(def ~(symbol (kebab-case (str tname))) (r/adapt-react-class (~'aget js/MaterialUI ~(name tname)))))

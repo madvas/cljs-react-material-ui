@@ -8,10 +8,10 @@ Current Material-UI version: `0.15.0-beta.2`
 https://github.com/madvas/cljs-react-material-ui-example
 
 ## Installation
-- Add `[cljs-react-material-ui "0.1.9"]` to your dependencies
-- Exclude `cljsjs/react` and `cljsjs/react-dom` from Om or other React library.
+- Add `[cljs-react-material-ui "0.2.11"]` to your dependencies
+- Exclude `cljsjs/react` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
-for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react cljsjs/react-dom]]`
+for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react]]`
 
 ## Usage
 
@@ -60,10 +60,44 @@ You can use all components (icons also) in their kebab-case form. Either with pr
     (ui/table-header-column "Date"))
 ```
 
-Global objects
+##### Global objects
 ```clojure
 js/MaterialUI ; Contains constructors to all components. No need to use directly.
 js/MaterialUIStyles ; Contains everything from material-ui/src/styles/index.js
 js/MaterialUISvgIcons ; Contains constructors to all icons. Exists only when you
                       ; include icons in your code. No need to use directly.
 ```
+
+##### Using with Reagent
+Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
+
+`[reagent "0.6.0-alpha" :exclusions [org.clojure/tools.reader cljsjs/react]]`
+```clojure
+(ns crmui-reagent.core
+  (:require
+    [cljsjs.material-ui]
+    [cljs-react-material-ui.core :as ui]
+    [cljs-react-material-ui.reagent :as rui]
+    [cljs-react-material-ui.icons :as ic]))
+    
+; Example with various components
+(defn home-page []
+  [rui/mui-theme-provider
+   {:mui-theme (ui/get-mui-theme
+                 {:palette {:text-color (ui/color :green600)}})}
+   [:div
+    [rui/app-bar {:title              "Title"
+                  :icon-element-right (ui/icon-button
+                                        (ic/action-account-balance-wallet))}]
+    [rui/paper
+     [:div "Hello"]
+     [rui/mui-theme-provider
+      {:mui-theme (ui/get-mui-theme {:palette {:text-color (ui/color :blue200)}})}
+      [rui/raised-button {:label "Blue button"}]]
+     (ic/action-home {:color (ui/color :grey600)})
+     [rui/raised-button {:label        "Click me"
+                         :icon         (ic/social-group)
+                         :on-touch-tap #(println "clicked")}]]]])
+    
+```
+
