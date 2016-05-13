@@ -24,7 +24,7 @@ for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react]]`
                                                         ; Including icons is not required
   ```
 
-U must start your MaterialUI component tree with [ui/mui-theme-provider](http://www.material-ui.com/v0.15.0-beta.2/#/customization/themes), which must have exactly one direct child and defined theme. Use the same pattern when u want to change theme for some children, see example app.
+You must start your MaterialUI component tree with [ui/mui-theme-provider](http://www.material-ui.com/v0.15.0-beta.2/#/customization/themes), which must have exactly one direct child and defined theme. Use the same pattern when you want to change theme for some children, see example app.
 ```clojure
 (ui/mui-theme-provider
     {:mui-theme (ui/get-mui-theme)}
@@ -32,7 +32,7 @@ U must start your MaterialUI component tree with [ui/mui-theme-provider](http://
     
 (ui/mui-theme-provider 
     {:mui-theme (ui/get-mui-theme 
-        {:palette                   ; U can use either camelCase or kebab-case
+        {:palette                   ; You can use either camelCase or kebab-case
             {:primary1-color (ui/color :deep-orange-a100)} 
          :raised-button 
             {:primary-text-color (ui/color :light-black) 
