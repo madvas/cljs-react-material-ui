@@ -1,4 +1,4 @@
-(defproject cljs-react-material-ui "0.2.14"
+(defproject cljs-react-material-ui "0.2.15"
   :description "Iterop library for material-ui.com"
   :url "https://github.com/madvas/cljs-react-material-ui"
   :license {:name "Eclipse Public License"

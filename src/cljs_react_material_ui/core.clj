@@ -16,3 +16,18 @@
 
 (defn generate-mui-reagent-fn [tname]
   `(def ~(symbol (kebab-case (str tname))) (r/adapt-react-class (~'aget js/MaterialUI ~(name tname)))))
+
+(defn generate-mui-rum-fn [tname]
+  `(def ~(symbol (kebab-case (str tname))) (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI ~(name tname))))
+
+(defmacro adapt-rum-class [root-obj n]
+  (let [n (name n)]
+    `(fn [& args#]
+       (let [[opts# children#] (if (map? (first args#))
+                                 [(first args#) (rest args#)]
+                                 [{} args#])
+             type# (first children#)]
+         (let [new-children# (if (vector? type#)
+                               [((rum.core/defc ~(gensym (name n)) [] (last children#)))]
+                               children#)]
+           (cljs-react-material-ui.core/create-mui-cmp ~root-obj ~n (cons opts# new-children#)))))))

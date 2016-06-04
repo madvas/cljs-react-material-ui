@@ -19,7 +19,7 @@
 
 (def props-kebab->camel->js (comp clj->js (partial walk-map-keys kebab->camel)))
 
-(defn ^:private create-mui-cmp [root-obj type args]
+(defn create-mui-cmp [root-obj type args]
   (let [first-arg (first args)
         args (if (or (map? first-arg) (nil? first-arg)) args (cons {} args))]
     (apply js/React.createElement (aget root-obj type)
@@ -34,7 +34,7 @@
 (defn color [color-key]
   (aget js/MaterialUIStyles "colors" (name (kebab->camel color-key))))
 
-(def ^:private create-mui-el (partial create-mui-cmp js/MaterialUI))
+(def create-mui-el (partial create-mui-cmp js/MaterialUI))
 
 (defn mui-theme-provider [& args] (create-mui-cmp js/MaterialUIStyles "MuiThemeProvider" args))
 

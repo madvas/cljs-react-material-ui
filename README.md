@@ -8,7 +8,7 @@ Current Material-UI version: `0.15.0`
 https://github.com/madvas/cljs-react-material-ui-example
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.14"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.15"]` to your dependencies
 - Exclude `cljsjs/react` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
 for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react]]`
@@ -98,6 +98,36 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
      [rui/raised-button {:label        "Click me"
                          :icon         (ic/social-group)
                          :on-touch-tap #(println "clicked")}]]]])
+    
+```
+&nbsp;
+##### Using with Rum
+&nbsp;
+```clojure
+(ns crmui-rum.core
+  (:require
+    [cljs-react-material-ui.core :as ui]
+    [cljs-react-material-ui.icons :as ic]
+    [cljs-react-material-ui.rum :as rui]
+    [rum.core :as rum]))
+    
+(rum/defc thing1
+          []
+          [:div "content1"])
+
+(defn home-page []
+  (rui/mui-theme-provider
+    {:mui-theme (ui/get-mui-theme)}
+    [:div
+     (rui/app-bar {:icon-element-right (rui/icon-button (ic/action-accessibility))})
+     (rui/tabs
+       (rui/tab {:label "one"}
+                [:div ["hey"
+                       (rui/paper "yes")]])
+       (rui/tab {:label "two"} (thing1))
+       (rui/tab {:label "drei"}
+                [:div
+                 (rui/paper {} "Ima paper")]))]))
     
 ```
 

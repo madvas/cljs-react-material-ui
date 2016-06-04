@@ -73,8 +73,10 @@
 (defmacro generate-mui-reagent-fns [tags]
   `(do ~@(map m/generate-mui-reagent-fn tags)))
 
-(comment
-  (macroexpand `(generate-mui-el-fns "create-mui-el")))
+(defmacro generate-mui-rum-fns [tags]
+  `(do ~@(map m/generate-mui-rum-fn tags)))
 
 (comment
-  (macroexpand `(generate-mui-reagent-fns ~tags)))
+  (macroexpand `(generate-mui-el-fns "create-mui-el"))
+  (macroexpand `(generate-mui-reagent-fns ~tags))
+  (macroexpand `(generate-mui-rum-fns ~tags)))
