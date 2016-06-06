@@ -8,9 +8,6 @@
 (defn ^:private kebab->camel [kw]
   (keyword (str/replace (name kw) #"-(\w)" (comp str/upper-case second))))
 
-(defn ^:private map-entry? [x]
-  (and (vector? x) (= (count x) 2)))
-
 (defn ^:private walk-map-keys [f props]
   (let [f' (fn [[k v]] [(f k) v])]
     (walk/postwalk (fn [x] (if (map? x) (into {} (map f' x)) x)) props)))
