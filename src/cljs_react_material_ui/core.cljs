@@ -12,10 +12,8 @@
   (and (vector? x) (= (count x) 2)))
 
 (defn ^:private walk-map-keys [f props]
-  (walk/prewalk (fn [x]
-                  (if (map-entry? x)
-                    [(f (key x)) (val x)]
-                    x)) props))
+  (let [f' (fn [[k v]] [(f k) v])]
+    (walk/postwalk (fn [x] (if (map? x) (into {} (map f' x)) x)) props)))
 
 (def props-kebab->camel->js (comp clj->js (partial walk-map-keys kebab->camel)))
 
