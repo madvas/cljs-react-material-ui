@@ -2,13 +2,13 @@
 
 This library is interop to get [Material-UI](http://www.material-ui.com/#/) working in Clojurescript.
 
-Current Material-UI version: `0.15.0`
+Current Material-UI version: `0.15.1`
 
 ###### See Om.Next example app here 
 https://github.com/madvas/cljs-react-material-ui-example
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.16"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.17"]` to your dependencies
 - Exclude `cljsjs/react` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
 for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react]]`
