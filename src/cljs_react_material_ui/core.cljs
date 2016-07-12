@@ -33,7 +33,6 @@
 
 (defn mui-theme-provider [& args] (create-mui-cmp js/MaterialUIStyles "MuiThemeProvider" args))
 
-
 (defn app-bar [& args] (create-mui-el "AppBar" args))
 (defn auto-complete [& args] (create-mui-el "AutoComplete" args))
 (defn avatar [& args] (create-mui-el "Avatar" args))
@@ -45,6 +44,7 @@
 (defn card-title [& args] (create-mui-el "CardTitle" args))
 (defn card-text [& args] (create-mui-el "CardText" args))
 (defn checkbox [& args] (create-mui-el "Checkbox" args))
+(defn chip [& args] (create-mui-el "Chip" args))
 (defn circular-progress [& args] (create-mui-el "CircularProgress" args))
 (defn date-picker [& args] (create-mui-el "DatePicker" args))
 (defn dialog [& args] (create-mui-el "Dialog" args))
@@ -64,6 +64,7 @@
 (defn make-selectable [& args] (create-mui-el "MakeSelectable" args))
 (defn menu [& args] (create-mui-el "Menu" args))
 (defn menu-item [& args] (create-mui-el "MenuItem" args))
+(defn mui-theme-provider [& args] (create-mui-el "MuiThemeProvider" args))
 (defn paper [& args] (create-mui-el "Paper" args))
 (defn popover [& args] (create-mui-el "Popover" args))
 (defn radio-button [& args] (create-mui-el "RadioButton" args))
@@ -96,6 +97,5 @@
 (defn toolbar-group [& args] (create-mui-el "ToolbarGroup" args))
 (defn toolbar-separator [& args] (create-mui-el "ToolbarSeparator" args))
 (defn toolbar-title [& args] (create-mui-el "ToolbarTitle" args))
-
 
 

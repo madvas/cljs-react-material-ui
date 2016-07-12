@@ -1,6 +1,8 @@
 (ns cljs-react-material-ui.elements
   (:require [cljs-react-material-ui.core :as m]))
 
+; export (\w*) .*
+; $1
 (def tags
   '[
     AppBar
@@ -14,6 +16,7 @@
     CardTitle
     CardText
     Checkbox
+    Chip
     CircularProgress
     DatePicker
     Dialog
@@ -33,6 +36,7 @@
     MakeSelectable
     Menu
     MenuItem
+    MuiThemeProvider
     Paper
     Popover
     RadioButton
