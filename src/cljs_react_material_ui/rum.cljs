@@ -4,8 +4,6 @@
   (:require [rum.core]
             [cljs-react-material-ui.core]))
 
-(def mui-theme-provider (cljs-react-material-ui.core/adapt-rum-class js/MaterialUIStyles "MuiThemeProvider"))
-
 (def app-bar (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI "AppBar"))
 (def auto-complete (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI "AutoComplete"))
 (def avatar (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI "Avatar"))

@@ -2,8 +2,6 @@
   (:refer-clojure :exclude [list stepper])
   (:require [reagent.core :as r]))
 
-(def mui-theme-provider (r/adapt-react-class (aget js/MaterialUIStyles "MuiThemeProvider")))
-
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))
 (def auto-complete (r/adapt-react-class (aget js/MaterialUI "AutoComplete")))
 (def avatar (r/adapt-react-class (aget js/MaterialUI "Avatar")))
