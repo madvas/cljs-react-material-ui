@@ -31,8 +31,6 @@
 
 (def create-mui-el (partial create-mui-cmp js/MaterialUI))
 
-(defn mui-theme-provider [& args] (create-mui-cmp js/MaterialUIStyles "MuiThemeProvider" args))
-
 (defn app-bar [& args] (create-mui-el "AppBar" args))
 (defn auto-complete [& args] (create-mui-el "AutoComplete" args))
 (defn avatar [& args] (create-mui-el "Avatar" args))
