@@ -131,3 +131,16 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
     
 ```
 
+## Troubleshooting
+##### Caret moves to the end when editing a text field
+This happens due to async rendering of clojurescript react libraries.
+Luckily, there is a workaround, which fixes most of use cases: Instead of `:value` prop use `:default-value` e.g:
+```
+(defn simple-text-field [text]
+  (let [text-state (r/atom text)]
+    (fn []
+      [rui/text-field
+       {:id "example"
+        :default-value @text-state
+        :on-change (fn [e] (reset! text-state (.. e -target -value)))}])))
+```
