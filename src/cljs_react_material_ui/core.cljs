@@ -1,18 +1,10 @@
 (ns cljs-react-material-ui.core
   (:refer-clojure :exclude [list stepper])
-  (:require-macros [cljs-react-material-ui.elements :as me])
-  (:require [clojure.string :as str]
-            [clojure.walk :as walk]
-            [cljsjs.material-ui]))
+  (:require [cljsjs.material-ui]
+            [camel-snake-kebab.core :as cs :include-macros true]
+            [camel-snake-kebab.extras :refer [transform-keys] ]))
 
-(defn ^:private kebab->camel [kw]
-  (keyword (str/replace (name kw) #"-(\w)" (comp str/upper-case second))))
-
-(defn ^:private walk-map-keys [f props]
-  (let [f' (fn [[k v]] [(f k) v])]
-    (walk/postwalk (fn [x] (if (map? x) (into {} (map f' x)) x)) props)))
-
-(def props-kebab->camel->js (comp clj->js (partial walk-map-keys kebab->camel)))
+(def props-kebab->camel->js (comp clj->js (partial transform-keys cs/->camelCase)))
 
 (defn create-mui-cmp [root-obj type args]
   (let [first-arg (first args)
@@ -27,7 +19,7 @@
                    js/MaterialUIStyles.getMuiTheme)))
 
 (defn color [color-key]
-  (aget js/MaterialUIStyles "colors" (name (kebab->camel color-key))))
+  (aget js/MaterialUIStyles "colors" (cs/->camelCaseString color-key)))
 
 (def create-mui-el (partial create-mui-cmp js/MaterialUI))
 
