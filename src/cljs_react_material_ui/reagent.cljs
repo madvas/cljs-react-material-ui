@@ -1,6 +1,14 @@
 (ns cljs-react-material-ui.reagent
   (:refer-clojure :exclude [list stepper])
-  (:require [reagent.core :as r]))
+  (:require [reagent.core :as r]
+            [reagent.impl.template]
+            [reagent.interop :refer-macros [$ $!]]))
+
+(set! reagent.impl.template/input-component?
+      (fn [x]
+        (or (= x "input")
+            (= x "textarea")
+            (= (reagent.interop/$ x :name) "TextField"))))
 
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))
 (def auto-complete (r/adapt-react-class (aget js/MaterialUI "AutoComplete")))
