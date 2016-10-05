@@ -8,7 +8,8 @@
       (fn [x]
         (or (= x "input")
             (= x "textarea")
-            (= (reagent.interop/$ x :name) "TextField"))))
+            (= (when-let [prop-types (reagent.interop/$ x :propTypes)]
+                 (aget prop-types "inputStyle"))))))
 
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))
 (def auto-complete (r/adapt-react-class (aget js/MaterialUI "AutoComplete")))
