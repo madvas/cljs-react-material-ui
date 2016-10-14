@@ -76,26 +76,27 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
 (ns crmui-reagent.core
   (:require
     [cljsjs.material-ui]
-    [cljs-react-material-ui.core :as ui]
-    [cljs-react-material-ui.reagent :as rui]
+    [cljs-react-material-ui.core :refer [get-mui-theme color]]
+    [cljs-react-material-ui.reagent :as ui]
     [cljs-react-material-ui.icons :as ic]))
     
 ; Example with various components
 (defn home-page []
-  [rui/mui-theme-provider
-   {:mui-theme (ui/get-mui-theme
-                 {:palette {:text-color (ui/color :green600)}})}
+  [ui/mui-theme-provider
+   {:mui-theme (get-mui-theme
+                 {:palette {:text-color (color :green600)}})}
    [:div
-    [rui/app-bar {:title              "Title"
-                  :icon-element-right (ui/icon-button
-                                        (ic/action-account-balance-wallet))}]
-    [rui/paper
+    [ui/app-bar {:title "Title"
+                  :icon-element-right
+                   (r/as-element [ui/icon-button
+                                    (ic/action-account-balance-wallet)])}]
+    [ui/paper
      [:div "Hello"]
-     [rui/mui-theme-provider
-      {:mui-theme (ui/get-mui-theme {:palette {:text-color (ui/color :blue200)}})}
-      [rui/raised-button {:label "Blue button"}]]
-     (ic/action-home {:color (ui/color :grey600)})
-     [rui/raised-button {:label        "Click me"
+     [ui/mui-theme-provider
+      {:mui-theme (get-mui-theme {:palette {:text-color (color :blue200)}})}
+      [ui/raised-button {:label "Blue button"}]]
+     (ic/action-home {:color (color :grey600)})
+     [ui/raised-button {:label        "Click me"
                          :icon         (ic/social-group)
                          :on-touch-tap #(println "clicked")}]]]])
     
@@ -106,9 +107,9 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
 ```clojure
 (ns crmui-rum.core
   (:require
-    [cljs-react-material-ui.core :as ui]
+    [cljs-react-material-ui.core :refer [get-mui-theme color]]
     [cljs-react-material-ui.icons :as ic]
-    [cljs-react-material-ui.rum :as rui]
+    [cljs-react-material-ui.rum :as ui]
     [rum.core :as rum]))
     
 (rum/defc thing1
@@ -116,17 +117,17 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
           [:div "content1"])
 
 (defn home-page []
-  (rui/mui-theme-provider
-    {:mui-theme (ui/get-mui-theme)}
+  (ui/mui-theme-provider
+    {:mui-theme (get-mui-theme)}
     [:div
-     (rui/app-bar {:icon-element-right (rui/icon-button (ic/action-accessibility))})
-     (rui/tabs
-       (rui/tab {:label "one"}
+     (ui/app-bar {:icon-element-right (ui/icon-button (ic/action-accessibility))})
+     (ui/tabs
+       (ui/tab {:label "one"}
                 [:div ["hey"
-                       (rui/paper "yes")]])
-       (rui/tab {:label "two"} (thing1))
-       (rui/tab {:label "drei"}
+                       (ui/paper "yes")]])
+       (ui/tab {:label "two"} (thing1))
+       (ui/tab {:label "drei"}
                 [:div
-                 (rui/paper {} "Ima paper")]))]))
+                 (ui/paper {} "Ima paper")]))]))
     
 ```
