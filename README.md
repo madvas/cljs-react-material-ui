@@ -78,7 +78,8 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
     [cljsjs.material-ui]
     [cljs-react-material-ui.core :refer [get-mui-theme color]]
     [cljs-react-material-ui.reagent :as ui]
-    [cljs-react-material-ui.icons :as ic]))
+    [cljs-react-material-ui.icons :as ic]
+    [reagent.core :as r]))
     
 ; Example with various components
 (defn home-page []
