@@ -27,6 +27,8 @@
 (defn auto-complete [& args] (create-mui-el "AutoComplete" args))
 (defn avatar [& args] (create-mui-el "Avatar" args))
 (defn badge [& args] (create-mui-el "Badge" args))
+(defn bottom-navigation [& args] (create-mui-el "BottomNavigation" args))
+(defn bottom-navigation-item [& args] (create-mui-el "BottomNavigationItem" args))
 (defn card [& args] (create-mui-el "Card" args))
 (defn card-actions [& args] (create-mui-el "CardActions" args))
 (defn card-header [& args] (create-mui-el "CardHeader" args))
@@ -51,7 +53,7 @@
 (defn linear-progress [& args] (create-mui-el "LinearProgress" args))
 (defn list [& args] (create-mui-el "List" args))
 (defn list-item [& args] (create-mui-el "ListItem" args))
-(defn make-selectable [& args] (create-mui-el "MakeSelectable" args))
+(defn make-selectable [& args] (create-mui-el "makeSelectable" args))
 (defn menu [& args] (create-mui-el "Menu" args))
 (defn menu-item [& args] (create-mui-el "MenuItem" args))
 (defn mui-theme-provider [& args] (create-mui-el "MuiThemeProvider" args))
@@ -87,5 +89,3 @@
 (defn toolbar-group [& args] (create-mui-el "ToolbarGroup" args))
 (defn toolbar-separator [& args] (create-mui-el "ToolbarSeparator" args))
 (defn toolbar-title [& args] (create-mui-el "ToolbarTitle" args))
-
-

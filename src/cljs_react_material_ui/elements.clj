@@ -9,6 +9,8 @@
     AutoComplete
     Avatar
     Badge
+    BottomNavigation
+    BottomNavigationItem
     Card
     CardActions
     CardHeader
@@ -33,7 +35,7 @@
     LinearProgress
     List
     ListItem
-    MakeSelectable
+    makeSelectable
     Menu
     MenuItem
     MuiThemeProvider
