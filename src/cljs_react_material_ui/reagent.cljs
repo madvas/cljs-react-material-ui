@@ -4,13 +4,6 @@
             [reagent.impl.template]
             [reagent.interop :refer-macros [$ $!]]))
 
-(set! reagent.impl.template/input-component?
-      (fn [x]
-        (or (= x "input")
-            (= x "textarea")
-            (= (when-let [prop-types (reagent.interop/$ x :propTypes)]
-                 (aget prop-types "inputStyle"))))))
-
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))
 (def auto-complete (r/adapt-react-class (aget js/MaterialUI "AutoComplete")))
 (def avatar (r/adapt-react-class (aget js/MaterialUI "Avatar")))
