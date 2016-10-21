@@ -23,6 +23,9 @@
 
 (def create-mui-el (partial create-mui-cmp js/MaterialUI))
 
+(defn css-transition-group [& args] (create-mui-cmp js/React.addons "CSSTransitionGroup" args))
+(defn transition-group [& args] (create-mui-cmp js/React.addons "TransitionGroup" args))
+
 (defn app-bar [& args] (create-mui-el "AppBar" args))
 (defn auto-complete [& args] (create-mui-el "AutoComplete" args))
 (defn avatar [& args] (create-mui-el "Avatar" args))

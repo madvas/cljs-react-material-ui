@@ -4,6 +4,9 @@
             [reagent.impl.template]
             [reagent.interop :refer-macros [$ $!]]))
 
+(def css-transition-group (r/adapt-react-class (aget js/React.addons "CSSTransitionGroup")))
+(def transition-group (r/adapt-react-class (aget js/React.addons "TransitionGroup")))
+
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))
 (def auto-complete (r/adapt-react-class (aget js/MaterialUI "AutoComplete")))
 (def avatar (r/adapt-react-class (aget js/MaterialUI "Avatar")))

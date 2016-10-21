@@ -8,7 +8,7 @@ Current Material-UI version: `0.16.0`
 https://github.com/madvas/cljs-react-material-ui-example
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.26"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.27"]` to your dependencies
 - Exclude `cljsjs/react` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
 for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react]]`
@@ -132,6 +132,20 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
                  (ui/paper {} "Ima paper")]))]))
     
 ```
+
+## React with Addons
+You can access componets for `TransitionGroup` and `CSSTransitionGroup` from each react library:
+```clojure
+cljs-react-material-ui.core/css-transition-group
+cljs-react-material-ui.core/transition-group
+
+cljs-react-material-ui.reagent/css-transition-group
+cljs-react-material-ui.reagent/transition-group
+
+cljs-react-material-ui.rum/css-transition-group
+cljs-react-material-ui.rum/transition-group
+```
+
 
 ## Troubleshooting
 ##### Caret moves to the end when editing a text field

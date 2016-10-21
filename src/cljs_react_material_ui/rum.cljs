@@ -4,6 +4,9 @@
   (:require [rum.core]
             [cljs-react-material-ui.core]))
 
+(def css-transition-group (cljs-react-material-ui.core/adapt-rum-class js/React.addons "CSSTransitionGroup"))
+(def transition-group (cljs-react-material-ui.core/adapt-rum-class js/React.addons "TransitionGroup"))
+
 (def app-bar (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI "AppBar"))
 (def auto-complete (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI "AutoComplete"))
 (def avatar (cljs-react-material-ui.core/adapt-rum-class js/MaterialUI "Avatar"))
