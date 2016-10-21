@@ -144,6 +144,8 @@ cljs-react-material-ui.reagent/transition-group
 
 cljs-react-material-ui.rum/css-transition-group
 cljs-react-material-ui.rum/transition-group
+
+; or see js/React.addons to access it in raw form
 ```
 
 
