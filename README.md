@@ -8,7 +8,7 @@ Current Material-UI version: `0.16.1`
 https://github.com/madvas/cljs-react-material-ui-example
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.29"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.30"]` to your dependencies
 - Exclude `cljsjs/react` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
 for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react]]`
@@ -146,6 +146,39 @@ cljs-react-material-ui.rum/css-transition-group
 cljs-react-material-ui.rum/transition-group
 
 ; or see js/React.addons to access it in raw form
+```
+
+## Selectable List
+This library provides pre-made selectable list, whrereas in MaterialUI has to be created manually.
+You can access orig `makeSelectable` function as `cljs-react-material-ui.core/make-selectable`
+See example in reagent:
+```clojure
+(defn selectable-list-example []
+  (let [list-item-selected (atom 1)]
+    (fn []
+      [ui/selectable-list
+       {:value @list-item-selected
+        :on-change (fn [event value]
+                     (reset! list-item-selected value))}
+       [ui/subheader {} "Selectable Contacts"]
+       [ui/list-item
+        {:value 1
+         :primary-text "Brendan Lim"
+         :nested-items
+         [(r/as-element
+            [ui/list-item
+             {:value 2
+              :key 8
+              :primary-text "Grace Ng"}])]}]
+       [ui/list-item
+        {:value 3
+         :primary-text "Kerem Suer"}]
+       [ui/list-item
+        {:value 4
+         :primary-text "Eric Hoffman"}]
+       [ui/list-item
+        {:value 5
+         :primary-text "Raquel Parrado"}]])))
 ```
 
 

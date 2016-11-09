@@ -6,11 +6,14 @@
 
 (def props-kebab->camel->js (comp clj->js (partial transform-keys cs/->camelCase)))
 
-(defn create-mui-cmp [root-obj type args]
-  (let [first-arg (first args)
-        args (if (or (map? first-arg) (nil? first-arg)) args (cons {} args))]
-    (apply js/React.createElement (aget root-obj type)
-           (props-kebab->camel->js (first args)) (rest args))))
+(defn create-mui-cmp
+  ([react-class args]
+   (let [first-arg (first args)
+         args (if (or (map? first-arg) (nil? first-arg)) args (cons {} args))]
+     (apply js/React.createElement react-class
+            (props-kebab->camel->js (first args)) (rest args))))
+  ([root-obj type args]
+    (create-mui-cmp (aget root-obj type) args)))
 
 (defn get-mui-theme
   ([] (get-mui-theme nil))
@@ -21,10 +24,13 @@
 (defn color [color-key]
   (aget js/MaterialUIStyles "colors" (cs/->camelCaseString color-key)))
 
+(def make-selectable (aget js/MaterialUI "makeSelectable"))
+
 (def create-mui-el (partial create-mui-cmp js/MaterialUI))
 
 (defn css-transition-group [& args] (create-mui-cmp js/React.addons "CSSTransitionGroup" args))
 (defn transition-group [& args] (create-mui-cmp js/React.addons "TransitionGroup" args))
+(defn selectable-list [& args] (create-mui-cmp (make-selectable (aget js/MaterialUI "List")) args))
 
 (defn app-bar [& args] (create-mui-el "AppBar" args))
 (defn auto-complete [& args] (create-mui-el "AutoComplete" args))
@@ -56,7 +62,6 @@
 (defn linear-progress [& args] (create-mui-el "LinearProgress" args))
 (defn list [& args] (create-mui-el "List" args))
 (defn list-item [& args] (create-mui-el "ListItem" args))
-(defn make-selectable [& args] (create-mui-el "makeSelectable" args))
 (defn menu [& args] (create-mui-el "Menu" args))
 (defn menu-item [& args] (create-mui-el "MenuItem" args))
 (defn mui-theme-provider [& args] (create-mui-el "MuiThemeProvider" args))

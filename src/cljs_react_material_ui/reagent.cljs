@@ -6,6 +6,7 @@
 
 (def css-transition-group (r/adapt-react-class (aget js/React.addons "CSSTransitionGroup")))
 (def transition-group (r/adapt-react-class (aget js/React.addons "TransitionGroup")))
+(def selectable-list (r/adapt-react-class ((aget js/MaterialUI "makeSelectable") (aget js/MaterialUI "List"))))
 
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))
 (def auto-complete (r/adapt-react-class (aget js/MaterialUI "AutoComplete")))
@@ -37,7 +38,6 @@
 (def linear-progress (r/adapt-react-class (aget js/MaterialUI "LinearProgress")))
 (def list (r/adapt-react-class (aget js/MaterialUI "List")))
 (def list-item (r/adapt-react-class (aget js/MaterialUI "ListItem")))
-(def make-selectable (r/adapt-react-class (aget js/MaterialUI "makeSelectable")))
 (def menu (r/adapt-react-class (aget js/MaterialUI "Menu")))
 (def menu-item (r/adapt-react-class (aget js/MaterialUI "MenuItem")))
 (def mui-theme-provider (r/adapt-react-class (aget js/MaterialUI "MuiThemeProvider")))
