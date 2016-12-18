@@ -11,7 +11,7 @@ git
 Since this version you must not only exclude `cljsjs/react`, but also `cljsjs/react-dom`  
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.33"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.34"]` to your dependencies
 - Exclude `cljsjs/react` and `cljsjs/react-dom` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
 for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react cljsjs/react-dom]]`
@@ -186,11 +186,24 @@ See example in reagent:
 ```
 
 
+## MaterialUI Chip Input
+If you feel like using [MaterialUIChipInput](https://github.com/TeamWertarbyte/material-ui-chip-input) all you need to
+do is add `[cljsjs/material-ui-chip-input "0.11.2-0"]` (or newer version) into your project.clj. 
+And now you can use chip-input according to your favorite framework namespace.
+```clojure
+(ns my.app
+    (:require 
+      [cljs-react-material-ui.chip-input.core :refer [chip-input]]
+      [cljs-react-material-ui.chip-input.reagent :refer [chip-input]]
+      [cljs-react-material-ui.chip-input.rum :refer [chip-input]]))
+```
+
+
 ## Troubleshooting
 ##### Caret moves to the end when editing a text field
 This happens due to async rendering of clojurescript react libraries.
 Luckily, there is a workaround, which fixes most of use cases: Instead of `:value` prop use `:default-value` e.g:
-```
+```clojure
 (defn simple-text-field [text]
   (let [text-state (r/atom text)]
     (fn []
