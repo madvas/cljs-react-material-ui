@@ -27,6 +27,6 @@
                                [{} args#])
            type# (first children#)]
        (let [new-children# (if (vector? type#)
-                             [((rum.core/defc ~(gensym) [] (last children#)))]
+                             [(sablono.interpreter/interpret (last children#))]
                              children#)]
          (cljs-react-material-ui.core/create-mui-cmp ~react-class (cons opts# new-children#))))))
