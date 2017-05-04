@@ -1,10 +1,9 @@
 (ns cljs-react-material-ui.core
   (:refer-clojure :exclude [list stepper])
   (:require [cljsjs.material-ui]
-            [camel-snake-kebab.core :as cs :include-macros true]
-            [camel-snake-kebab.extras :refer [transform-keys] ]))
+            [sablono.util]))
 
-(def props-kebab->camel->js (comp clj->js (partial transform-keys cs/->camelCase)))
+(def props-kebab->camel->js (comp clj->js (partial sablono.util/camel-case-keys)))
 
 (defn create-mui-cmp
   ([react-class args]
@@ -22,7 +21,7 @@
                    js/MaterialUIStyles.getMuiTheme)))
 
 (defn color [color-key]
-  (aget js/MaterialUIStyles "colors" (cs/->camelCaseString color-key)))
+  (aget js/MaterialUIStyles "colors" (sablono.util/camel-case color-key)))
 
 (def make-selectable (aget js/MaterialUI "makeSelectable"))
 
