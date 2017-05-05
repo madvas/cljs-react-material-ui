@@ -1,9 +1,15 @@
 (ns cljs-react-material-ui.core
   (:refer-clojure :exclude [list stepper])
   (:require [cljsjs.material-ui]
-            [sablono.util]))
+            [clojure.walk :refer [postwalk]]
+            [sablono.util :refer [camel-case camel-case-keys]]))
 
-(def props-kebab->camel->js (comp clj->js (partial sablono.util/camel-case-keys)))
+(defn transform-keys [t coll]
+  "Recursively transforms all map keys in coll with t."
+  (letfn [(transform [[k v]] [(t k) v])]
+    (postwalk (fn [x] (if (map? x) (into {} (map transform x)) x)) coll)))
+
+(def props-kebab->camel->js (comp clj->js camel-case-keys))
 
 (defn create-mui-cmp
   ([react-class args]
@@ -12,16 +18,17 @@
      (apply js/React.createElement react-class
             (props-kebab->camel->js (first args)) (rest args))))
   ([root-obj type args]
-    (create-mui-cmp (aget root-obj type) args)))
+   (create-mui-cmp (aget root-obj type) args)))
 
 (defn get-mui-theme
   ([] (get-mui-theme nil))
-  ([raw-theme] (-> raw-theme
-                   props-kebab->camel->js
-                   js/MaterialUIStyles.getMuiTheme)))
+  ([raw-theme] (->> raw-theme
+                 (transform-keys camel-case)
+                 clj->js
+                 js/MaterialUIStyles.getMuiTheme)))
 
 (defn color [color-key]
-  (aget js/MaterialUIStyles "colors" (sablono.util/camel-case color-key)))
+  (aget js/MaterialUIStyles "colors" (name (camel-case color-key))))
 
 (def make-selectable (aget js/MaterialUI "makeSelectable"))
 
