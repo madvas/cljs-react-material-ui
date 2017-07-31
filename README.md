@@ -15,7 +15,7 @@ When using [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 `:dataSourceConfig` in camelCase form, since `data-` is interpreted as HTML data attribute
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.46"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.47"]` to your dependencies
 - Exclude `cljsjs/react` and `cljsjs/react-dom` from Om or other React library.
 This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
 for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react cljsjs/react-dom]]`
