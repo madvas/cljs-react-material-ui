@@ -2,7 +2,7 @@
 
 This library is interop to get [Material-UI](http://www.material-ui.com/#/) working in Clojurescript.
 
-Current Material-UI version: `0.18.6`
+Current Material-UI version: `0.18.7`
 
 ###### See Om.Next example app here 
 https://github.com/madvas/cljs-react-material-ui-example
