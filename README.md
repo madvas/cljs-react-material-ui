@@ -2,23 +2,25 @@
 
 This library is interop to get [Material-UI](http://www.material-ui.com/#/) working in Clojurescript.
 
-Current Material-UI version: `0.18.7`
+Current Material-UI version: `0.19.0`
 
 ###### See Om.Next example app here 
 https://github.com/madvas/cljs-react-material-ui-example
 git
-## Warning version update >= 0.2.33
-Since this version you must not only exclude `cljsjs/react`, but also `cljsjs/react-dom`  
 
 ## Warning version update >= 0.2.43
 When using [AutoComplete](http://www.material-ui.com/#/components/auto-complete) use props `:dataSource` and 
 `:dataSourceConfig` in camelCase form, since `data-` is interpreted as HTML data attribute
 
+## Warning version update >= 0.2.48
+Since this version you don't need to exclude `cljsjs/react` and `cljsjs/react-dom`. Material-ui bundle doesn't contain own React anymore.
+Also don't forget to rename your `on-touch-tap` into `on-click`. 
+Update your Clojurescript version (>= 1.9.908) 
+
 ## Installation
-- Add `[cljs-react-material-ui "0.2.47"]` to your dependencies
-- Exclude `cljsjs/react` and `cljsjs/react-dom` from Om or other React library.
-This is because currently material-ui has to be built together with react to get [onTouchTap](http://www.material-ui.com/#/get-started/installation) event [working](http://stackoverflow.com/questions/29881439/react-tap-events-and-material-ui). This will not be needed in future.
-for example: `[org.omcljs/om "1.0.0-alpha34" :exclusions [cljsjs/react cljsjs/react-dom]]`
+- Add `[cljs-react-material-ui "0.2.48"]` to your dependencies
+- Add `[cljsjs/react "15.6.1-1"]` or newer version to your dependencies
+- Add `[cljsjs/react-dom "15.6.1-1"]` or newer version to your dependencies
 
 ## Usage
 
@@ -141,21 +143,6 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
     
 ```
 
-## React with Addons
-You can access componets for `TransitionGroup` and `CSSTransitionGroup` from each react library:
-```clojure
-cljs-react-material-ui.core/css-transition-group
-cljs-react-material-ui.core/transition-group
-
-cljs-react-material-ui.reagent/css-transition-group
-cljs-react-material-ui.reagent/transition-group
-
-cljs-react-material-ui.rum/css-transition-group
-cljs-react-material-ui.rum/transition-group
-
-; or see js/React.addons to access it in raw form
-```
-
 ## Selectable List
 This library provides pre-made selectable list, whrereas in MaterialUI has to be created manually.
 You can access orig `makeSelectable` function as `cljs-react-material-ui.core/make-selectable`
@@ -192,7 +179,7 @@ See example in reagent:
 
 ## MaterialUI Chip Input
 If you feel like using [MaterialUIChipInput](https://github.com/TeamWertarbyte/material-ui-chip-input) all you need to
-do is add `[cljsjs/material-ui-chip-input "0.11.2-0"]` (or newer version) into your project.clj. 
+do is add `[cljsjs/material-ui-chip-input "0.17.0-0"]` (or newer version) into your project.clj. 
 And now you can use chip-input according to your favorite framework namespace.
 ```clojure
 (ns my.app

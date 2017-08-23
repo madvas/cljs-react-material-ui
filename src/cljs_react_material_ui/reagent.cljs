@@ -4,8 +4,6 @@
             [reagent.impl.template]
             [reagent.interop :refer-macros [$ $!]]))
 
-(def css-transition-group (r/adapt-react-class (aget js/React.addons "CSSTransitionGroup")))
-(def transition-group (r/adapt-react-class (aget js/React.addons "TransitionGroup")))
 (def selectable-list (r/adapt-react-class ((aget js/MaterialUI "makeSelectable") (aget js/MaterialUI "List"))))
 
 (def app-bar (r/adapt-react-class (aget js/MaterialUI "AppBar")))

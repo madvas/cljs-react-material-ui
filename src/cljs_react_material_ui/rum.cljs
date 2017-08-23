@@ -4,8 +4,6 @@
   (:require [rum.core]
             [cljs-react-material-ui.core]))
 
-(def css-transition-group (cljs-react-material-ui.core/adapt-rum-class (aget js/React.addons "CSSTransitionGroup")))
-(def transition-group (cljs-react-material-ui.core/adapt-rum-class (aget js/React.addons "TransitionGroup")))
 (def selectable-list (cljs-react-material-ui.core/adapt-rum-class ((aget js/MaterialUI "makeSelectable") (aget js/MaterialUI "List"))))
 
 (def app-bar (cljs-react-material-ui.core/adapt-rum-class (aget js/MaterialUI "AppBar")))
