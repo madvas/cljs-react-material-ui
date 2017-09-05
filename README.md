@@ -79,9 +79,12 @@ js/MaterialUIUtils ; Contains some of util functions provided by MaterialUI
 ```
 
 ##### Using with Reagent
-Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
+Works with `reagent "0.6.0-alpha"` and up. So the dependency may be specified like this:
 
-`[reagent "0.6.0-alpha" :exclusions [org.clojure/tools.reader cljsjs/react]]`
+`[reagent "0.7.0"]`
+
+A simple Reagent example is as follows:
+
 ```clojure
 (ns crmui-reagent.core
   (:require
@@ -109,7 +112,7 @@ Works with `reagent "0.6.0-alpha"` and up. So dependency may be sth like this
      (ic/action-home {:color (color :grey600)})
      [ui/raised-button {:label        "Click me"
                          :icon         (ic/social-group)
-                         :on-touch-tap #(println "clicked")}]]]])
+                         :on-click     #(println "clicked")}]]]])
     
 ```
 &nbsp;
