@@ -2,7 +2,7 @@
 
 This library is interop to get [Material-UI](http://www.material-ui.com/#/) working in Clojurescript.
 
-Current Material-UI version: `0.19.0`
+Current Material-UI version: `0.19.2`
 
 ###### See Om.Next example app here 
 https://github.com/madvas/cljs-react-material-ui-example
@@ -18,7 +18,7 @@ Also don't forget to rename your `on-touch-tap` into `on-click`.
 Update your Clojurescript version (>= 1.9.908) 
 
 ## Installation
-- Add `[cljs-react-material-ui "0.2.48"]` to your dependencies
+- Add `[cljs-react-material-ui "0.2.50"]` to your dependencies
 - Add `[cljsjs/react "15.6.1-1"]` or newer version to your dependencies
 - Add `[cljsjs/react-dom "15.6.1-1"]` or newer version to your dependencies
 
